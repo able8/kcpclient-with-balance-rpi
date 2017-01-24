@@ -3,5 +3,5 @@ It starts no more than 4 xtaci/kcptun clients and uses pen to balance network fl
 
 # How to use?
 
-docker run -itd --privileged --restart=always --cap-add=NET_ADMIN --net=host -v /dorry_data/kcpclient:/home/kcpclient --name router_kcp dorrypizza/kcpclient-with-balance-rpi:20170120-1
+docker run -itd --privileged --restart=always --cap-add=NET_ADMIN --net=host -v /dorry_data/kcpclient:/home/kcpclient --name router_kcp dorrypizza/kcpclient-with-balance-rpi
 
