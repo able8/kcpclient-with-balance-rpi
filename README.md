@@ -1,7 +1,32 @@
 # kcpclient-with-balance-rpi
-It starts no more than 4 xtaci/kcptun clients and uses pen to balance network flow, with config file /dorry_data/kcpclient/config.json.
+It is a docker image of pen and kcpclient (at most 4) built on Raspberry pi 3 (arm7l).
 
-# How to use?
+# Usage
 
-docker run -itd --privileged --restart=always --cap-add=NET_ADMIN --net=host -v /dorry_data/kcpclient:/home/kcpclient --name router_kcp dorrypizza/kcpclient-with-balance-rpi
+* Fetch the code
+```
+git clone git@github.com:LaoLuMian/kcpclient-with-balance-rpi.git
+```
+
+* Modify the configuration
+```
+cd kcpclient-with-balance-rpi
+vim config.json
+```
+
+* Run multiple kcpclient
+
+You have 2 options
+
+```
+./kcpclient_start.sh
+```
+
+OR 
+
+```
+sudo mkdir -p /dorry_data/kcpclient_conf
+sudo cp `pwd`/config.json /dorry_data/kcpclient_conf/
+docker run -itd --privileged --restart=always --cap-add=NET_ADMIN --net=host -v /dorry_data/kcpclient_conf:/home/kcpclient --name router_kcp kcpclient-rpi:20170303-1
+```
 
